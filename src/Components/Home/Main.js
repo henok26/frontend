@@ -1,14 +1,23 @@
 import React from 'react'
-
-const c = () => {
+import { Outlet } from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import Filter from './Filter'
+import Search from './Search' 
+const Main = () => {
   return (
-    <div className='test'>
+    <div>
+{/* <Header/>
 
-      <h1>hello world</h1>
-      <h1>hello world</h1>
-      <h1>hello world</h1>
+<Filter/>
+<Search/>
+ */}
+<Footer/>
+<Outlet/>
+<h1>Hello</h1>
+
     </div>
   )
 }
 
-export default c
+export default Main
