@@ -3,7 +3,10 @@ import { DatePicker, Space } from "antd";
 
 const Search = () => {
   const { RangePicker } = DatePicker;
-  const [keyword, setKeyword] = useState({});
+  // const [keyword, setKeyword] = useState({});
+
+  const [keyword, setKeyword] = useState({ city: '', guests: '' });
+
   //Storing the data range value
   const [value, setValue] = useState([]);
   function returnDates(date, dateString) {
@@ -13,7 +16,7 @@ const Search = () => {
     updateKeyword("dateIn", dateString[0]);
     updateKeyword("dateOut", dateString[1]);
   }
-  //function to update a specific field in the keyword state of object 
+  //function to update a specific field in the keyword state of object
   const updateKeyword = (field, value) => {
     setKeyword((prevKeyword) => ({ ...prevKeyword, [field]: value }));
   };
@@ -21,7 +24,7 @@ const Search = () => {
   return (
     <>
       <div className="searchbar">
-{/*        
+        {/*        
        //input field for searching destination */}
         <input
           className="search"
@@ -29,17 +32,19 @@ const Search = () => {
           id="search_destination"
           type="text"
           value={keyword.city}
-          onChange={(e)=>updateKeyword('city',e.target.value)}
+          onChange={(e) => updateKeyword("city", e.target.value)}
         />
         <Space direction="vertical" size={12} className="search">
           <RangePicker
-          value={value}
+            value={value}
             format="YYYY-MM-DD"
             picker="date"
             className="date_picker"
-            disableDate={(current)=>{return current && current.isBefore(Date.now(),'day')}}
-
-onChange={returnDates}/>
+            disabledDate={(current) => {
+              return current && current.isBefore(Date.now(), "day");
+            }}
+            onChange={returnDates}
+          />
         </Space>
         {/* input field for adding guest */}
         <input
@@ -47,9 +52,12 @@ onChange={returnDates}/>
           id="addguest"
           type="number"
           placeholder="Add guest"
+          onChange={(e)=>updateKeyword('guests',e.target.value)}
+          value={keyword.guests}
         />
         {/* Search icon */}
-        <span class="material-symbols-outlined searchicon">search</span>
+        <span className="material-symbols-outlined searchicon">search</span>
+
       </div>
     </>
   );
