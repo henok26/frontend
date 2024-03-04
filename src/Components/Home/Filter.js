@@ -1,4 +1,5 @@
 import React ,{useState} from 'react'
+import FilterModal from './FilterModal';
 
 const Filter = () => {
 //State for controlling modal visibility
@@ -7,24 +8,38 @@ const Filter = () => {
     const[selectedFilters,setSelectedFilters]=useState({})
   
 //function to handle opening the modal /popupWindow
-const handleShowAllPhotos=()=>{
+const handleOpenModal=()=>{
     setIsModalOpen(true);
 };
 
-  //function to handle openning the modal
+  //function to handle closing the modal
   const  handleCloseModal=()=>{
+    setIsModalOpen(false);
 
   }
   //function to handle changing filters
-  const handleFilterChange=()=>{
-    // setSelectedFilters(prevFilters)=>({})
+  // const handleFilterChange=()=>{
+  //   //update selected filter with new value 
+  //    setSelectedFilters((prevFilters)=>({...prevFilters,[filtername]:value,}));
 
-  }
+  // }
+
+  const handleFilterChange = (filterName, value) => {
+    // Update selected filter with new value
+    setSelectedFilters((prevFilters) => ({ ...prevFilters, [filterName]: value }));
+};
     return (
     <>
-<span className="material-symbols-outlined">
+    {/* //clickevent to  open the modal */}
+<span className="material-symbols-outlined " onClick={handleOpenModal}>
 tune
 </span>
+{isModalOpen&&(<FilterModal
+
+selectedFilters={selectedFilters}
+onFilterChange={handleFilterChange}
+onClose={handleCloseModal}
+/>)}
 
 </>
   )
