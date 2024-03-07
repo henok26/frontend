@@ -135,6 +135,7 @@ icon:"kitchen"
 
 ];
 //function to handle clearing filters
+
 const handleClearFilters=()=>{
 setPriceRange({min:600,max:3000});
 setPropertyType('');
@@ -142,7 +143,8 @@ setRoomType("");
 setAmenities([]);
 
 };
-//
+//function to handle changes in a menities
+const handleAmenitiesChange=(selectedAmenity)=>{setAmenities((prevAmenities)=>prevAmenities.includes(selectedAmenity)? prevAmenities.filter((item)=>item!==selectedAmenity):[...prevAmenities,selectedAmenity])}
 
   return <div>FilterModal</div>;
 };
