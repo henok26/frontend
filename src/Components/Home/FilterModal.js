@@ -56,6 +56,93 @@ onFilterChange('amenities',amenities);
 onclose();
 
   }
+  //options for property types
+  const propertyTypeOptions=[
+    
+    {value:'House',
+label:"House",
+icon:'home'},
+{
+  value:"Flat",
+  label:"Flat",
+  icon:"apartment"
+},
+{
+value:"Guest House",
+label:"Guest House",
+icon:'hotel',
+
+},
+{value:'Hotel',label:"Hotel",icon:'meeting_room'},
+];
+//options for room types
+const roomTypeOptions=[{value:"Entire Room",
+label:"Entire Room",
+icon:"hotel",
+
+},
+
+{
+  value:"Room",label:"Room",icon:"meeting_room",
+
+},
+{
+value:"AnyType",label:"AnyType",icon:"appartment"
+
+}
+
+
+]
+//options for ammenities
+const amenitiesOptions=[{
+value:"Wifi",
+label:"Wifi",
+icon:"wifi",
+
+},{
+value:"Kitchen",
+label:"Kitchen",
+icon:"kitchen"
+
+},
+{
+  value:"Ac",
+  label:"AC",
+  icon:"ac",
+
+},
+{
+  value:"Washing Machine",
+  label:"Washing Machine",
+  icon:"local_laundary_service"
+},
+{
+  value:"Tv",
+  label:"TV",
+  icon:"tv"
+},{
+  value:'pool',
+  label:"pool",
+  icon:'pool',
+
+
+},
+{
+  value:'Free Parking',
+  label:'Free Parking',
+  icon:"local_parking",
+},
+
+];
+//function to handle clearing filters
+const handleClearFilters=()=>{
+setPriceRange({min:600,max:3000});
+setPropertyType('');
+setRoomType("");
+setAmenities([]);
+
+};
+//
 
   return <div>FilterModal</div>;
 };
