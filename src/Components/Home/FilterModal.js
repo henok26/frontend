@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types"; //for prop types checking
-import "../../CSS/FilterModal.css";
-import "react-input-range/lib/css/index.css";
-import InputRange from "react-input-range";
+import React, { useEffect, useState } from "react"; // Importing React, useEffect, useState from React library
+import PropTypes from "prop-types"; // Importing PropTypes for type-checking props
+import "../../CSS/FilterModal.css"; // Importing CSS file for styling
+import "../../CSS/Modal.css"; // Importing CSS file for modal styling
+import "react-input-range/lib/css/index.css"; // Importing CSS file for input range styling
+import InputRange from "react-input-range"; // Importing InputRange component for range input
 
 const FilterModal = (selectedFilters, onFilterChange, onClose) => {
   const [priceRange, setPriceRange] = useState({
@@ -27,8 +28,7 @@ const FilterModal = (selectedFilters, onFilterChange, onClose) => {
     setPropertyType(selectedFilters.propertyType || "");
     setRoomType(selectedFilters.roomType || "");
     setAmenities(selectedFilters.amenities || []);
-   }, [selectedFilters]);
-  
+  }, [selectedFilters]);
 
   //function to handle changes in price range
   const handlePriceRangeChange = (value) => {
@@ -46,107 +46,132 @@ const FilterModal = (selectedFilters, onFilterChange, onClose) => {
     setPriceRange((prev) => ({ ...prev, max: maxValue }));
   };
   //function to handle applying filters
-  const handleFilterChange=()=>{
-
-onFilterChange('minPrice',priceRange.min);
-onFilterChange('maxPrice',priceRange.max);
-onFilterChange('propertyType',propertyType);
-onFilterChange('roomType',roomType);
-onFilterChange('amenities',amenities);
-onclose();
-
-  }
+  const handleFilterChange = () => {
+    onFilterChange("minPrice", priceRange.min);
+    onFilterChange("maxPrice", priceRange.max);
+    onFilterChange("propertyType", propertyType);
+    onFilterChange("roomType", roomType);
+    onFilterChange("amenities", amenities);
+    onClose();
+  };
   //options for property types
-  const propertyTypeOptions=[
-    
-    {value:'House',
-label:"House",
-icon:'home'},
-{
-  value:"Flat",
-  label:"Flat",
-  icon:"apartment"
-},
-{
-value:"Guest House",
-label:"Guest House",
-icon:'hotel',
+  const propertyTypeOptions = [
+    { value: "House", label: "House", icon: "home" },
+    {
+      value: "Flat",
+      label: "Flat",
+      icon: "apartment",
+    },
+    {
+      value: "Guest House",
+      label: "Guest House",
+      icon: "hotel",
+    },
+    { value: "Hotel", label: "Hotel", icon: "meeting_room" },
+  ];
+  //options for room types
+  const roomTypeOptions = [
+    { value: "Entire Room", label: "Entire Room", icon: "hotel" },
 
-},
-{value:'Hotel',label:"Hotel",icon:'meeting_room'},
-];
-//options for room types
-const roomTypeOptions=[{value:"Entire Room",
-label:"Entire Room",
-icon:"hotel",
+    {
+      value: "Room",
+      label: "Room",
+      icon: "meeting_room",
+    },
+    {
+      value: "AnyType",
+      label: "AnyType",
+      icon: "appartment",
+    },
+  ];
+  //options for ammenities
+  const amenitiesOptions = [
+    {
+      value: "Wifi",
+      label: "Wifi",
+      icon: "wifi",
+    },
+    {
+      value: "Kitchen",
+      label: "Kitchen",
+      icon: "kitchen",
+    },
+    {
+      value: "Ac",
+      label: "AC",
+      icon: "ac",
+    },
+    {
+      value: "Washing Machine",
+      label: "Washing Machine",
+      icon: "local_laundary_service",
+    },
+    {
+      value: "Tv",
+      label: "TV",
+      icon: "tv",
+    },
+    {
+      value: "pool",
+      label: "pool",
+      icon: "pool",
+    },
+    {
+      value: "Free Parking",
+      label: "Free Parking",
+      icon: "local_parking",
+    },
+  ];
+  //function to handle clearing filters
 
-},
+  const handleClearFilters = () => {
+    setPriceRange({ min: 600, max: 3000 });
+    setPropertyType("");
+    setRoomType("");
+    setAmenities([]);
+  };
+  //function to handle changes in a menities
+  const handleAmenitiesChange = (selectedAmenity) => {
+    setAmenities((prevAmenities) =>
+      prevAmenities.includes(selectedAmenity)
+        ? prevAmenities.filter((item) => item !== selectedAmenity)
+        : [...prevAmenities, selectedAmenity]
+    );
+  };
+  //function to handle changes in propertytype
+  const handlePropertyTypeChange = (selectedType) => {
+    setPropertyType((prevType) =>
+      prevType === selectedType ? "" : selectedType
+    );
+  };
+  //function to handle room type
 
-{
-  value:"Room",label:"Room",icon:"meeting_room",
-
-},
-{
-value:"AnyType",label:"AnyType",icon:"appartment"
-
-}
-
-
-]
-//options for ammenities
-const amenitiesOptions=[{
-value:"Wifi",
-label:"Wifi",
-icon:"wifi",
-
-},{
-value:"Kitchen",
-label:"Kitchen",
-icon:"kitchen"
-
-},
-{
-  value:"Ac",
-  label:"AC",
-  icon:"ac",
-
-},
-{
-  value:"Washing Machine",
-  label:"Washing Machine",
-  icon:"local_laundary_service"
-},
-{
-  value:"Tv",
-  label:"TV",
-  icon:"tv"
-},{
-  value:'pool',
-  label:"pool",
-  icon:'pool',
-
-
-},
-{
-  value:'Free Parking',
-  label:'Free Parking',
-  icon:"local_parking",
-},
-
-];
-//function to handle clearing filters
-
-const handleClearFilters=()=>{
-setPriceRange({min:600,max:3000});
-setPropertyType('');
-setRoomType("");
-setAmenities([]);
-
-};
-//function to handle changes in a menities
-const handleAmenitiesChange=(selectedAmenity)=>{setAmenities((prevAmenities)=>prevAmenities.includes(selectedAmenity)? prevAmenities.filter((item)=>item!==selectedAmenity):[...prevAmenities,selectedAmenity])}
-
-  return <div>FilterModal</div>;
+  const handleRoomTypeChange = (selectedType) => {
+    setPropertyType((prevType) =>
+      prevType === selectedType ? "" : selectedType
+    );
+  };
+  return (
+    <div className="modal-backdrop">
+      <div>
+        <div className="modal-content ">
+          <h4>
+            Filters <hr />
+          </h4>
+          {/* close the button */}
+          <button className="close-button" onClick={onClose}>
+            <span>&times;</span>
+          </button>
+          {/* filter section */}
+          <div className="modal-filters-container">
+            <div className="filter-section">
+              <label>Price range:</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default FilterModal;

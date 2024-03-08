@@ -4,6 +4,7 @@ import FilterModal from './FilterModal';
 const Filter = () => {
 //State for controlling modal visibility
     const [isModalOpen,setIsModalOpen]=useState(false);
+
     //state for controlling selected filter
     const[selectedFilters,setSelectedFilters]=useState({})
   
@@ -18,11 +19,7 @@ const handleOpenModal=()=>{
 
   }
   //function to handle changing filters
-  // const handleFilterChange=()=>{
-  //   //update selected filter with new value 
-  //    setSelectedFilters((prevFilters)=>({...prevFilters,[filtername]:value,}));
-
-  // }
+ 
 
   const handleFilterChange = (filterName, value) => {
     // Update selected filter with new value
@@ -31,10 +28,10 @@ const handleOpenModal=()=>{
     return (
     <>
     {/* //clickevent to  open the modal */}
-<span className="material-symbols-outlined " onClick={handleOpenModal}>
+<span class="material-symbols-outlined  filter" onClick={handleOpenModal}>
 tune
 </span>
-{isModalOpen&&(<FilterModal
+{isModalOpen && (<FilterModal
 
 selectedFilters={selectedFilters}
 onFilterChange={handleFilterChange}
@@ -42,7 +39,7 @@ onClose={handleCloseModal}
 />)}
 
 </>
-  )
-}
+  );
+};
 
 export default Filter
