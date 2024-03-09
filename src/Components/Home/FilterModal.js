@@ -5,7 +5,7 @@ import "../../CSS/FilterModal.css"; // Importing CSS file for styling
 import "react-input-range/lib/css/index.css"; // Importing CSS file for input range styling
 import InputRange from "react-input-range"; // Importing InputRange component for range input
 
-const FilterModal = (selectedFilters, onFilterChange, onClose) => {
+const FilterModal = ({selectedFilters, onFilterChange, onClose}) => {
   const [priceRange, setPriceRange] = useState({
     min: selectedFilters.priceRange?.min || 600,
     max: selectedFilters.priceRange?.max || 30000,
