@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; // Importing React, useEffect, useState from React library
 import PropTypes from "prop-types"; // Importing PropTypes for type-checking props
 import "../../CSS/FilterModal.css"; // Importing CSS file for styling
-import "../../CSS/Modal.css"; // Importing CSS file for modal styling
+// import "../../CSS/Modal.css"; // Importing CSS file for modal styling
 import "react-input-range/lib/css/index.css"; // Importing CSS file for input range styling
 import InputRange from "react-input-range"; // Importing InputRange component for range input
 
@@ -166,6 +166,12 @@ const FilterModal = (selectedFilters, onFilterChange, onClose) => {
           <div className="modal-filters-container">
             <div className="filter-section">
               <label>Price range:</label>
+              <InputRange
+              minValue={600}
+              maxValue={3000}
+              value={priceRange}
+              onChange={handlePriceRangeChange}
+              />
             </div>
           </div>
         </div>
