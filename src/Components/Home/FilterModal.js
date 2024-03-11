@@ -262,8 +262,8 @@ Property Type:
 </div>
 {/* //filter action for buttons */}
 <div className="filter-buttons">
-<button className="clear-button">
-  
+<button className="clear-button" onClick={handleClearFilters}>
+  clear
 </button>
 </div>
 
