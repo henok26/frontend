@@ -5,7 +5,7 @@ import "../../CSS/FilterModal.css"; // Importing CSS file for styling
 import "react-input-range/lib/css/index.css"; // Importing CSS file for input range styling
 import InputRange from "react-input-range"; // Importing InputRange component for range input
 
-const FilterModal = ({selectedFilters, onFilterChange, onClose}) => {
+const FilterModal = ({ selectedFilters, onFilterChange, onClose }) => {
   const [priceRange, setPriceRange] = useState({
     min: selectedFilters.priceRange?.min || 600,
     max: selectedFilters.priceRange?.max || 30000,
@@ -167,111 +167,99 @@ const FilterModal = ({selectedFilters, onFilterChange, onClose}) => {
             <div className="filter-section">
               <label>Price range:</label>
               <InputRange
-              minValue={600}
-              maxValue={3000}
-              value={priceRange}
-              onChange={handlePriceRangeChange}
+                minValue={600}
+                maxValue={3000}
+                value={priceRange}
+                onChange={handlePriceRangeChange}
               />
               <div className="range-inputs">
-<input
-type='number'
-value={priceRange.min}
-onChange={handleMinInputChange}
-
-/>
-<span>-</span>
-<input 
-type='number'
-value={priceRange.max}
-onChange={handleMaxInputChange}
-/>
-
+                <input
+                  type="number"
+                  value={priceRange.min}
+                  onChange={handleMinInputChange}
+                />
+                <span>-</span>
+                <input
+                  type="number"
+                  value={priceRange.max}
+                  onChange={handleMaxInputChange}
+                />
               </div>
             </div>
             {/* //properrty type filter */}
             <div className="filter-section">
-<label>
-Property Type:
-
-</label>
-<div className="icon-box">
-  {propertyTypeOptions.map((options)=>(
-  
-  <div key={options.value} className={`selectable-box ${propertyType===options.value?"selected":""}`}
-  onClick={()=>handlePropertyTypeChange(options.value)}
-  >
-<span className="material-icons">{options.icon}</span>
-<span>{options.label}</span>
-
-  </div>))}
-
-</div>
+              <label>Property Type:</label>
+              <div className="icon-box">
+                {propertyTypeOptions.map((options) => (
+                  <div
+                    key={options.value}
+                    className={`selectable-box ${
+                      propertyType === options.value ? "selected" : ""
+                    }`}
+                    onClick={() => handlePropertyTypeChange(options.value)}
+                  >
+                    <span className="material-icons">{options.icon}</span>
+                    <span>{options.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-{/* Room Type filrer */}
-<div className="filter-section">
-  <label>
-    Room Type:
-  </label>
-  <div className="icon-box">
-{roomTypeOptions.map((option)=>(
-  <div
-  key={option.value}
-  className={`selectable-box ${roomType===option.value? "selected" : " "}`}
-  onClick={()=>handleRoomTypeChange(option.value)}
-  
-  >
-   <span className="material-icons">
-    {option.icon}
-    </span> 
-    <span>{option.label}</span>
+            {/* Room Type filrer */}
+            <div className="filter-section">
+              <label>Room Type:</label>
+              <div className="icon-box">
+                {roomTypeOptions.map((option) => (
+                  <div
+                    key={option.value}
+                    className={`selectable-box ${
+                      roomType === option.value ? "selected" : " "
+                    }`}
+                    onClick={() => handleRoomTypeChange(option.value)}
+                  >
+                    <span className="material-icons">{option.icon}</span>
+                    <span>{option.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-
-  </div>
-))}
-  </div>
-
-</div>
-
-{/* //Amenities Filter */}
-<div className="filter-section">
-<label>
-  Amenities :
-</label>
-<div className="amenities-checkboxes">
-{amenitiesOptions.map((option)=>(
-<div key={option.value}  className="amenity-checkbox" >
-  {console.log(amenities.includes(option.value))}
-  <input
-  type="checkbox"
-  value={option.value}
-  checked={amenities.includes(option.value)}
-  onChange={()=>handleAmenitiesChange(option.value)}
-  />
-  <span className="material-icons amenitieslabel">
-    {option.icon}
-
-  </span>
-  <span>{option.label}</span>
-
-
-</div>
-
-))}
-</div>
-
-</div>
-{/* //filter action for buttons */}
-<div className="filter-buttons">
-<button className="clear-button" onClick={handleClearFilters}>
-  clear
-</button>
-</div>
-
+            {/* //Amenities Filter */}
+            <div className="filter-section">
+              <label>Amenities :</label>
+              <div className="amenities-checkboxes">
+                {amenitiesOptions.map((option) => (
+                  <div key={option.value} className="amenity-checkbox">
+                    {console.log(amenities.includes(option.value))}
+                    <input
+                      type="checkbox"
+                      value={option.value}
+                      checked={amenities.includes(option.value)}
+                      onChange={() => handleAmenitiesChange(option.value)}
+                    />
+                    <span className="material-icons amenitieslabel">
+                      {option.icon}
+                    </span>
+                    <span>{option.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* //filter action for buttons */}
+            <div className="filter-buttons">
+              <button className="clear-button" onClick={handleClearFilters}>
+                clear
+              </button>
+              <button onClick={handleFilterChange}>APply Filters</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
+FilterModal.propTypes={
+  selectedFilters:PropTypes.object.isRequired,onFilterChange:PropTypes.func.isRequired,
+  onCLose:PropTypes.func.isRequired,
+}
 
 export default FilterModal;
