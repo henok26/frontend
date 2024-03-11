@@ -81,7 +81,7 @@ const FilterModal = ({selectedFilters, onFilterChange, onClose}) => {
     {
       value: "AnyType",
       label: "AnyType",
-      icon: "appartment",
+      icon: "apartment",
     },
   ];
   //options for ammenities
@@ -99,12 +99,12 @@ const FilterModal = ({selectedFilters, onFilterChange, onClose}) => {
     {
       value: "Ac",
       label: "AC",
-      icon: "ac",
+      icon: "kitchen",
     },
     {
       value: "Washing Machine",
       label: "Washing Machine",
-      icon: "local_laundary_service",
+      icon: "kitchen",
     },
     {
       value: "Tv",
@@ -200,12 +200,73 @@ Property Type:
   <div key={options.value} className={`selectable-box ${propertyType===options.value?"selected":""}`}
   onClick={()=>handlePropertyTypeChange(options.value)}
   >
-<span className="material-"></span>
+<span className="material-icons">{options.icon}</span>
+<span>{options.label}</span>
 
   </div>))}
 
 </div>
             </div>
+{/* Room Type filrer */}
+<div className="filter-section">
+  <label>
+    Room Type:
+  </label>
+  <div className="icon-box">
+{roomTypeOptions.map((option)=>(
+  <div
+  key={option.value}
+  className={`selectable-box ${roomType===option.value? "selected" : " "}`}
+  onClick={()=>handleRoomTypeChange(option.value)}
+  
+  >
+   <span className="material-icons">
+    {option.icon}
+    </span> 
+    <span>{option.label}</span>
+
+
+  </div>
+))}
+  </div>
+
+</div>
+
+{/* //Amenities Filter */}
+<div className="filter-section">
+<label>
+  Amenities :
+</label>
+<div className="amenities-checkboxes">
+{amenitiesOptions.map((option)=>(
+<div key={option.value}  className="amenity-checkbox" >
+  {console.log(amenities.includes(option.value))}
+  <input
+  type="checkbox"
+  value={option.value}
+  checked={amenities.includes(option.value)}
+  onChange={()=>handleAmenitiesChange(option.value)}
+  />
+  <span className="material-icons amenitieslabel">
+    {option.icon}
+
+  </span>
+  <span>{option.label}</span>
+
+
+</div>
+
+))}
+</div>
+
+</div>
+{/* //filter action for buttons */}
+<div className="filter-buttons">
+<button className="clear-button">
+  
+</button>
+</div>
+
           </div>
         </div>
       </div>
