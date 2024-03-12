@@ -3,14 +3,14 @@ const Card=({image,address,price,name})=>{
 
   return(<figure className='property'>
 
-<img src={image} alt="propertyImage"/>
+<img src={image} alt="Propertyimg"/>
 
 <h4>{name}</h4>
 <figcaption>
   <main className='propertydetails'>
     <h5>{name}</h5>
     <h6>
-    <span class="material-symbols-outlined">
+    <span class="material-symbols-outlined houseicon">
 home_pin
 </span>
 {address}
@@ -18,7 +18,7 @@ home_pin
     <p>
       <span className='price'>Br.{price}</span>
       per night
-      
+
     </p>
   </main>
 </figcaption>
