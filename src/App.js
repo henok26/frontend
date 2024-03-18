@@ -16,9 +16,9 @@ function App() {
       //define a Route component that matches all paths"/" and render the main component
       //exact propertirs ensure that the route matches exactly what u gave in path
       
-      <Route path = "/" element={<Main/>} exact >
+      <Route path = "/" element={<Main/>}id='main' exact >
    
-   <Route path="/" element={<PropertyList/>} exact/>
+   <Route id='home' index element={<PropertyList/>} exact/>
 
       </Route>
 
