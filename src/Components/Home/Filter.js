@@ -1,13 +1,16 @@
 import React ,{useState} from 'react'
 import FilterModal from './FilterModal';
-
+import { UseDispatch, useDispatch } from 'react-redux';
+import { getAllProperties } from '../../Store/Property/property-action';
+import { propertyAction } from '../../Store/Property/property-slice';
 const Filter = () => {
 //State for controlling modal visibility
     const [isModalOpen,setIsModalOpen]=useState(false);
 
     //state for controlling selected filter
     const[selectedFilters,setSelectedFilters]=useState({})
-  
+  const dispatch=useDispatch();
+ 
 //function to handle opening the modal /popupWindow
 const handleOpenModal=()=>{
     setIsModalOpen(true);
