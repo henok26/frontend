@@ -44,28 +44,49 @@ fetchProperties(currentPage);
   
   return (
     <>
-    {properties.length===0?(<p className='{not_found ......}'></p>):(
-
-<div className='propertylist'>
-{properties.map((property)=>(<Card
-key={property.id}
-id={property._id}
-image={property.images[0].url}
-name={property.propertyName}
-address={`${property.address.city},${property.address.state},${property.address.pincode}`}
-price={property.price}
-
-
-/>))}
-      
-    </div>
-)}
-    
+      {properties.length === 0 ? (
+        <p className="{not_found ......}"></p>
+      ) : (
+        <div className="propertylist">
+          {properties.map((property) => (
+            <Card
+              key={property.id}
+              id={property._id}
+              image={property.images[0].url}
+              name={property.propertyName}
+              address={`${property.address.city},${property.address.state},${property.address.pincode}`}
+              price={property.price}
+            />
+          ))}
+        </div>
+      )}
+      {/* Pagination Control */}
+      <div className="pagination">
+        {/* previous button */}
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => ({
+              page: prev.page - 1,
+            }))
+          }
+          disabled={currentPage.page === 1}
+        >
+          {/* //disabling previous button if wwe are in first page */}
+          <span class="material-symbols-outlined">arrow_back_ios</span>
+        </button>
+        {/* button for next page */}
+        <button
+          className="next_btn "
+          onClick={()=>setCurrentPage((prev) => ({
+            page: prev.page + 1,
+          }))}
+          disabled={properties.length < 12 || currentPage.page === lastPage}
+        >
+         
+          <span class="material-symbols-outlined">arrow_forward_ios</span>
+        </button>
+      </div>
     </>
-    
-
-
-   
   );
 };
 
