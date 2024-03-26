@@ -1,12 +1,16 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import { getAllProperties } from '../../Store/Property/property-action';
 import { propertyAction } from '../../Store/Property/property-slice';
 const Card=({image,address,price,name})=>{
 
   return(<figure className='property'>
+    <Link to={`/propertylist/${id}`}>
+    <img src={image} alt="Propertyimg"/>
+    </Link>
 
-<img src={image} alt="Propertyimg"/>
+
 
 <h4>{name}</h4>
 <figcaption>
