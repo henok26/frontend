@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 import { getAllProperties } from '../../Store/Property/property-action';
 import { propertyAction } from '../../Store/Property/property-slice';
-const Card=({image,address,price,name})=>{
+const Card=({id,image,address,price,name})=>{
 
   return(<figure className='property'>
     <Link to={`/propertylist/${id}`}>
@@ -17,7 +17,7 @@ const Card=({image,address,price,name})=>{
   <main className='propertydetails'>
     <h5>{name}</h5>
     <h6>
-    <span class="material-symbols-outlined houseicon">
+    <span className="material-symbols-outlined houseicon">
 home_pin
 </span>
 {address}

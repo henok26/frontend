@@ -11,11 +11,11 @@ const PropertyDetails = () => {
   const {propertydetails}=useSelector((state)=>state.propertydetails);
   console.log(propertydetails);
   useEffect(()=>{
-dispatch(getPropertyDetails(id))
+dispatch(getPropertyDetails(id));
 
 
   },[dispatch,id]);
-  const {propertyName,address,images}=propertydetails(id);
+  const {propertyName,address,images}=propertydetails;
   return (
    <div className='property-container'>
 {
@@ -28,7 +28,7 @@ dispatch(getPropertyDetails(id))
    <span class="material-symbols-outlined">
 house
 </span>
-<span className='location'>{`$ {address.area},${address.city},${address.pincode},${address.state}` } </span>
+<span className="location">{`${address.area},${address.city},${address.pincode},${address.state}`}  </span>
 
    </h6>
    <PropertyImg images={images}/>
