@@ -33,6 +33,12 @@ alt={`property-${index + 2}`}/>
 ))}
 
    </div>
+   <div className='similar-photos-container'>
+<button className='similar-photos' onClick={handleShowAllPhotos}><span class="material-symbols-outlined">
+photo_library
+</span></button>
+   </div>
+
    
    </>
   )
