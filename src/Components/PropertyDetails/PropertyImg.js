@@ -20,6 +20,17 @@ const handleCloseModal=()=>{
 
 </div>
 {/* remaining images */}
+{/* iteration from images array */}
+{images.slice(1,5).map((image,index)=>(
+
+    <div key={index} className='img-item'>
+<img 
+className='images'
+src={image.url}
+
+alt={`property-${index + 2}`}/>
+    </div>
+))}
 
    </div>
    
