@@ -17,6 +17,7 @@ const PropertyDetails = () => {
   }, [dispatch, id]);
   const {
     propertyName,
+    price,
     address,
     images,
     description,
@@ -48,7 +49,14 @@ const PropertyDetails = () => {
               <hr />
               <PropertyAmenities amenities={amenities} />
               <br /> <br />
-              <BookingForm/>
+              <BookingForm propertyId={id}
+              price={price}
+              propertyName={propertyName}
+              address={address}
+              maximumGuest={maximumGuest}
+              currentBookings={currentBookings}
+
+              />
             </div>
           </div>
         </>
