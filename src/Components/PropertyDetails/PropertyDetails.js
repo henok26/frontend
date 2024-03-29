@@ -43,6 +43,7 @@ Max number of Guest:{maximumGuest} <br/><br/>
 </p>
 <hr/>
 <PropertyAmenities amenities ={amenities}/>  
+<br/> <br/>
 
 </div>
    </div>
