@@ -4,6 +4,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom';
 import { getPropertyDetails } from '../../Store/PropertyDetails/propertyDetails-action';
 import PropertyImg from './PropertyImg';
+import PropertyAmenities from '../../Store/PropertyDetails/PropertyAmenities';
 
 const PropertyDetails = () => {
   const dispatch=useDispatch();
@@ -15,7 +16,7 @@ dispatch(getPropertyDetails(id));
 
 
   },[dispatch,id]);
-  const {propertyName,address,images}=propertydetails;
+  const {propertyName,address,images,description,maximumGuest,amenities}=propertydetails;
   return (
    <div className='property-container'>
 {
@@ -32,6 +33,19 @@ house
 
    </h6>
    <PropertyImg images={images}/>
+   <div className='middle-container row '>
+<div className='des-and-amenities col-md-8 col-sm-12 col-12'>
+  <h2 className='property-description-header'>
+Description</h2>
+<p className='property-description'>
+{description} <br></br><br/>
+Max number of Guest:{maximumGuest} <br/><br/>
+</p>
+<hr/>
+<PropertyAmenities amenities ={amenities}/>  
+
+</div>
+   </div>
 
   </> )
 }

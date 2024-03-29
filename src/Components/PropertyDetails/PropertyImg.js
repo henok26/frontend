@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-
+import Modal from './Modal';
 const PropertyImg = ({images}) => {
 const [isModalOpen,setIsModalOpen]=useState(false);
 const handleShowAllPhotos=()=>{
@@ -37,7 +37,9 @@ alt={`property-${index + 2}`}/>
 <button className='similar-photos' onClick={handleShowAllPhotos}><span class="material-symbols-outlined">
 photo_library
 </span></button>
+
    </div>
+   {isModalOpen && <Modal images={images} onClose={handleCloseModal}/>}
 
    
    </>
